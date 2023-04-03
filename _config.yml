@@ -18,6 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+timezone: Europe/Kyiv
+
 title: Exploring the World of Apple's Secure Operating System
 author: Sloka Justicial
 email: sloka.justicial@gmail.com
