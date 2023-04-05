@@ -13,6 +13,8 @@ osascript -e 'display dialog "MacOS wants to access the System Preferences" with
 
 This command line creates a dialog box with the title "System Preferences" and the message "MacOS wants to access the System Preferences", along with a caution icon and a blank default answer field. The "hidden answer" option hides the entered text under black dots, so the user can't see what they type.
 
+![Screenshot of a fake password prompt on macOS that is frequently used by malware developers to trick users into entering their passwords](/images/fake_password_prompt.png)
+
 If you enter your password into this prompt, the malware can intercept it and use it for nefarious purposes, such as stealing your identity, compromising your accounts, or infecting your system with more malware. Therefore, it's important to be vigilant and skeptical when you see password prompts that you didn't expect or that ask for more information than they should.
 
 To protect yourself from fake password prompts on MacOS, here are some tips:
