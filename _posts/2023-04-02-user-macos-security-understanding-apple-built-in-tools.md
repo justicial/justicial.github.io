@@ -2,7 +2,7 @@
 layout: post
 title: "User macOS Security: Understanding Apple's Built-in Tools"
 date: 2023-04-02
-categories: macOS Security
+categories: Security
 ---
 macOS has a reputation for being a secure operating system, but that doesn't mean it's immune to threats. Malware and other types of attacks can still affect macOS users, which is why it's important to understand the security tools and features that Apple has built into the operating system. In this post, we'll take a closer look at some of the built-in security tools that are available to individual users of macOS. While these tools can't guarantee absolute security, understanding how they work can help users make more informed decisions about how to protect themselves and their data.
 

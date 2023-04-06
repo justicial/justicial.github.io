@@ -2,7 +2,7 @@
 layout: post
 title: "Beware of Fake Password Prompts on macOS"
 date: 2023-04-05 14:00:00
-categories: macOS Malware-Analysis
+categories: Malware-Analysis
 ---
 Have you ever seen a password prompt on your MacOS that seemed suspicious or unexpected? You might have been targeted by a phishing attack that aims to steal your login credentials or other sensitive information. One common tactic used by such attackers is to create a fake password prompt that looks like a legitimate system dialog, but actually captures your keystrokes and sends them to a remote server.
 

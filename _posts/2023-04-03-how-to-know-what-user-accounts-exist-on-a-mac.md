@@ -2,7 +2,7 @@
 layout: post
 title: How to know what user accounts exist on a Mac
 date: 2023-04-03 14:00:00
-categories: macOS Security
+categories: shell-scripting
 ---
 
 If you're a Mac user, you might be wondering how to find out what user accounts exist on your machine. There are a couple of different ways to do this, and in this post, we'll explore three of them.

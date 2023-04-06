@@ -2,7 +2,7 @@
 layout: post
 title: "Protecting Your Mac from Security Threats"
 date: 2023-04-03
-categories: macOS Security
+categories: Security
 ---
 Macs are known for their robustness, longevity, and reliability. They are often perceived as being impervious to security issues that are commonly associated with Windows-driven devices. However, this perception is not entirely accurate. While it is true that Macs are not targeted by as much malware as Windows machines, there is still a significant amount of malicious software that can cause problems for Mac users.
 

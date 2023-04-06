@@ -38,6 +38,7 @@ comments:
 disqus:
   shortname: "justicial"
 google_analytics: G-89CNTKL5JX
+permalink: /:categories/:title
 
 # Exclude from processing.
 # The following items will not be processed, by default.
