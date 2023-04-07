@@ -16,7 +16,9 @@ tell application "Finder"
 end tell
 {% endhighlight %}
 
-This script will loop through every open Finder window and set the sidebar width to zero, effectively hiding it from view. If you're not familiar with AppleScript, you can simply copy and paste this code into the Script Editor app (found in the Utilities folder) and then run it by pressing the "Play" button.
+This script will loop through every open Finder window and set the sidebar width to zero, effectively hiding it from view. However, keep in mind that the first time you run this script, it will request Automation permission for Finder. You can grant permission in the System Preferences > Security & Privacy > Privacy > Automation section.
+
+If you're not familiar with AppleScript, you can simply copy and paste this code into the `Script Editor` app (found in the `Utilities` folder) and then run it by pressing the "Play" button.
 
 Alternatively, you can use a one-liner **shell script** that uses the `osascript` binary to run the same AppleScript code:
 
