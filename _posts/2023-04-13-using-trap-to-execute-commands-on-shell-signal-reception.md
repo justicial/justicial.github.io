@@ -12,8 +12,8 @@ Signals in macOS are similar to those in other Unix-based operating systems. The
 
 * `SIGHUP` (1): Hangup detected on controlling terminal or death of controlling process
 * `SIGINT` (2): Interrupt from keyboard (Ctrl+C)
-* `SIGQUIT` (3): Quit from keyboard (Ctrl+)
-* `SIGABRT` (6): Abort signal from abort(3)
+* `SIGQUIT` (3): Quit from keyboard (Ctrl+\\)
+* `SIGABRT` (6): Abort signal from `abort(3)`
 * `SIGKILL` (9): Kill signal
 * `SIGTERM` (15): Termination signal
 
