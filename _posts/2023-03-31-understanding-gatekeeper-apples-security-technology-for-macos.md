@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Understanding Gatekeeper: Apple's Security Technology for macOS"
-date: 2023-03-31 10:00:00 +0200
+date: 2023-03-31 10:00:00 +0300
 categories: Security
 ---
 Gatekeeper is a significant security technology developed by Apple to protect macOS users from potentially harmful software. Apple is well known for being picky about what users can install on their operating systems. In this article, we will explain how Gatekeeper works, its evolution, and the features that make it an integral part of the macOS security framework.
