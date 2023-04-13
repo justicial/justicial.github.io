@@ -18,7 +18,19 @@ Gatekeeper was added to the operating system starting from Mac OS X 10.7.3 Lion 
 
 Gatekeeper provides three levels of security for macOS users: `App Store`, `App Store and identified developers`, and `Anywhere`. The `App Store` option only allows apps that have been downloaded from the Mac App Store to run, ensuring that the apps are from verified developers and have been signed with a valid Apple Developer ID. The `App Store and identified developers` option allows apps downloaded from the App Store and those signed by identified developers to run. Finally, the `Anywhere` option allows all applications to run, regardless of where they were downloaded.
 
-The Gatekeeper interface can be accessed by navigating to `System Preferences > Security & Privacy > General`, and selecting one of the three options for "Allow apps downloaded from." Users can change the setting as needed depending on their requirements, but it is recommended to keep the Gatekeeper setting on the "App Store and identified developers" option.
+The Gatekeeper interface can be accessed by navigating to `System Preferences` > `Security & Privacy` > `General`, and selecting one of the three options for `Allow apps downloaded from`. Note that the `Anywhere` option is hidden by default starting from macOS Sierra (version 10.12). However, it can be enabled by disabling Gatekeeper from the command line. After that, the `Anywhere` option will be shown in the `Security and Privacy` panel. Users can change the setting as needed depending on their requirements, but it is recommended to keep the Gatekeeper setting on the App Store and identified developers option.
+
+While Gatekeeper is an essential security feature for macOS users, it can be disabled using the following command in Terminal:
+{% highlight sh %}
+sudo spctl --master-disable
+{% endhighlight %}
+
+This command disables Gatekeeper, allowing any app to run on the system, including those that have not been signed by a developer. Disabling Gatekeeper can leave the system vulnerable to potentially harmful software, so it is recommended that users only disable it when absolutely necessary and re-enable it as soon as possible. To re-enable Gatekeeper, use the following command in Terminal:
+{% highlight sh %}
+sudo spctl --master-enable
+{% endhighlight %}
+
+It is important to exercise caution when opening any downloaded files, especially if they are not from a trusted source.
 
 ## Quarantine Extended Attribute
 
@@ -72,11 +84,11 @@ LSQuarantineOriginURLString (TEXT)
 LSQuarantineOriginAlias (BLOB)
 {% endhighlight %}
 
-Due to the QuarantineEvents database not being protected by SIP, it has been widely used by adversaries to read their campaign identifiers. However, as of macOS 12.4, Apple has stopped adding URLString to this table. As a result, we can see interesting cases of the new methods of storing such kind of configuration, for instance, it can be [DMG's internal structure](https://blog.confiant.com/lart-de-l-%C3%A9vasion-how-shlayer-hides-its-configuration-inside-apple-proprietary-dmg-files-73586b6e7f8d) as Taha Karim pointed out.
+Since the QuarantineEvents database is not protected by SIP, it has been widely used by adversaries to read their campaign identifiers. However, as of macOS 12.4, Apple has stopped adding URLString to this table. As a result, we can see interesting cases of the new methods of storing such kind of configuration, for instance, it can be [DMG's internal structure](https://blog.confiant.com/lart-de-l-%C3%A9vasion-how-shlayer-hides-its-configuration-inside-apple-proprietary-dmg-files-73586b6e7f8d) as Taha Karim pointed out.
 
 ## System Policy Database
 
-The System Policy database is located at `/var/db/SystemPolicy` and includes four tables: `authority, bookmarkhints, feature, and object`. The authority table is a ledger consisting of an allow/deny decision, the assessed code-signing requirements’ string or cdhash, and the responsible assessor. Most entries have the GKE (Gatekeeper’s exclusions) as the assessor. A SIP-protected (plist) listing enumeration of these exclusions is found at `/var/db/SystemPolicyConfiguration/gke.bundle/Contents/Resources/gke.auth`. When new apps are assessed by Gatekeeper, that will be reflected in the authority table. The System Policy database is not protected by SIP.
+The System Policy database is located at `/var/db/SystemPolicy` and includes four tables: `authority`, `bookmarkhints`, `feature`, and `object`. The authority table is a ledger consisting of an allow/deny decision, the assessed code-signing requirements’ string or cdhash, and the responsible assessor. Most entries have the GKE (Gatekeeper’s exclusions) as the assessor. A SIP-protected (plist) listing enumeration of these exclusions is found at `/var/db/SystemPolicyConfiguration/gke.bundle/Contents/Resources/gke.auth`. When new apps are assessed by Gatekeeper, that will be reflected in the authority table. The System Policy database is not protected by SIP.
 
 ## Other DBs
 
@@ -85,7 +97,7 @@ Besides the mentioned above databases, Gatekeeper actively uses the following da
 * /var/db/SystemPolicyConfiguration/KextPolicy
 * /var/db/SystemPolicyConfiguration/Tickets
 
-These databases are used by the system to determine whether a certain executable, kernel extension or code signature should be trusted. The ExecPolicy database is used for allowing or denying the execution of specific binaries or scripts. The KextPolicy database is used for allowing or denying the loading of specific kernel extensions. The Tickets database is used for managing software update tickets. These databases are essential to the functioning of Gatekeeper, and they are protected by SIP, which makes them very difficult for adversaries to tamper with.
+These databases are used by the system to determine whether a certain executable, kernel extension or code signature should be trusted. The `ExecPolicy` database is used for allowing or denying the execution of specific binaries or scripts. The `KextPolicy` database is used for allowing or denying the loading of specific kernel extensions. The `Tickets` database is used for managing software update tickets. These databases are essential to the functioning of Gatekeeper, and they are protected by SIP, which makes them very difficult for adversaries to tamper with.
 
 ## To sum up
 
