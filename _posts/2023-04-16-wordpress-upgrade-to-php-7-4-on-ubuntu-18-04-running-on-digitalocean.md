@@ -33,66 +33,66 @@ Once you have created a snapshot and your droplet is back online, proceed with t
 ### Step 1: Update Your System
 
 First, ensure your system is up-to-date by running the following commands:
-```sh
+{% highlight sh %}
 sudo apt update
 sudo apt upgrade
 sudo apt dist-upgrade
 sudo apt autoremove
 sudo reboot
-```
+{% endhighlight %}
 
 ### Step 2: List All Installed PHP Packages
 
 List all installed PHP packages and temporarily save the list to a file:
-```sh
+{% highlight sh %}
 sudo dpkg -l | grep php | tee packages-first.txt
-```
+{% endhighlight %}
 
 ### Step 3: Add PHP 7.4 Repository
 
-```sh
+{% highlight sh %}
 sudo add-apt-repository ppa:ondrej/php
-```
+{% endhighlight %}
 
 ### Step 4: Install PHP 7.4 and Its Required Extensions
 
-```sh
+{% highlight sh %}
 sudo apt install php7.4 php7.4-common php7.4-cli
 sudo apt install php7.4-bcmath php7.4-bz2 php7.4-curl php7.4-intl php7.4-mbstring php7.4-mysql php7.4-readline php7.4-xml php7.4-zip
-```
+{% endhighlight %}
 
 ### Step 5: List All Installed PHP Packages Again
 
-```sh
+{% highlight sh %}
 sudo dpkg -l | grep php | tee packages-second.txt
-```
+{% endhighlight %}
 
 ### Step 6: Install PHP 7.4 FPM and Enable Its Configuration
 
-```sh
+{% highlight sh %}
 sudo apt install php7.4-fpm
 sudo a2enconf php7.4-fpm
-```
+{% endhighlight %}
 
 ### Step 7: Verify That PHP 7.4 Is Installed
 
-```sh
+{% highlight sh %}
 php -v
-```
+{% endhighlight %}
 
 ### Step 8: Disable PHP 7.2 and Enable PHP 7.4
 
-```sh
+{% highlight sh %}
 sudo a2dismod php7.2
 sudo a2enmod php7.4
-```
+{% endhighlight %}
 
 ### Step 9: Restart the Apache Server
 
 Finally, restart the Apache server for the changes to take effect:
-```sh
+{% highlight sh %}
 sudo systemctl restart apache2
-```
+{% endhighlight %}
 
 ## Conclusion
 
