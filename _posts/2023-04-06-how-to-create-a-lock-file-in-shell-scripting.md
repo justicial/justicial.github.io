@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "How to Create a Lock File in Shell Scripting"
-date: 2023-04-06
+date: 2023-04-06 10:00:00 +0300
 categories: shell-scripting
 ---
 Preventing a script from running multiple times is a common task in the world of scripting. This is often necessary to avoid race conditions and other undesirable effects that can occur when multiple instances of a script run simultaneously. One way to accomplish this is to use a lock file.
 
-A lock file is simply a file that is used to indicate whether or not a script is already running. If the lock file exists, the script knows that another instance is already running and it can exit gracefully. If the lock file does not exist, the script creates it and begins running.
+A lock file is simply a file that is used to indicate whether or not a script is already running. If the lock file exists and was created within a specified time interval, the script knows that another instance is already running and it can exit gracefully. If the lock file does not exist or is older than the specified time interval, the script creates it and begins running.
 
 In this post, we will demonstrate how to **create a lock file in shell scripting** using shell primitives. Here is an example script that demonstrates this functionality:
 {% highlight sh %}
@@ -15,12 +15,13 @@ In this post, we will demonstrate how to **create a lock file in shell scripting
 LOCK_NAME="$(basename "${0}")" || exit
 readonly LOCK_NAME
 readonly LOCK_PATH="${TMPDIR}${LOCK_NAME%.*}.lock"
+readonly EXEC_TIMEINTERVAL=60 # minutes
 
 ## Lock
 
 add_lock() {
-    # check if lock already exists
-    ! [ -f "${LOCK_PATH}" ] || return
+    # return if lock exists and mod. time is earlier than EXEC_TIMEINTERVAL
+   { ! [ -f "${LOCK_PATH}" ] || [ "$(/usr/bin/find "${LOCK_PATH}" -mmin +${EXEC_TIMEINTERVAL} 2>/dev/null)" ]; } || return
 
     # create lock file with process id inside it
     echo "$$" > "${LOCK_PATH}"
@@ -51,9 +52,9 @@ main "${@}"
 
 Let's take a closer look at how this script works.
 
-First, we define the name and path of the lock file. The name is based on the name of the script, and the path is the `TMPDIR` directory plus the lock file name.
+First, we define the name and path of the lock file. The name is based on the name of the script, and the path is the `TMPDIR` directory plus the lock file name. We also define the `EXEC_TIMEINTERVAL` variable, which represents the minimum time interval (in minutes) between script executions.
 
-Next, we define two functions: `add_lock` and `remove_lock`. The `add_lock` function checks if the lock file already exists. If it does, the function returns immediately, indicating that another instance of the script is already running. If the lock file does not exist, the function creates it and writes the process id of the current script instance to the file.
+Next, we define two functions: `add_lock` and `remove_lock`. The `add_lock` function checks if the lock file exists and its modification time is within the specified time interval. If both conditions are met, the function returns immediately, indicating that another instance of the script is already running. If the lock file does not exist or is older than the specified time interval, the function creates it and writes the process id of the current script instance to the file.
 
 The `remove_lock` function checks if the lock file contains the process id of the current script instance. If it does not, the function returns immediately, indicating that another process has created the lock file. If the lock file does contain the process id of the current script instance, the function removes the lock file.
 
