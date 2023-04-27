@@ -33,7 +33,7 @@ tccutil reset All
 tccutil reset Camera com.example.app
 {% endhighlight %}
 
-Finally, it is worth noting that there is one app on the Mac that always has `Full Disk Access` but never appears in the Full Disk Access pane in System Preferences: the `Finder`. Any application that can control the Finder (listed in ‘Automation’ in the Privacy pane) also has Full Disk Access, although you will see neither the Finder nor the controlling app listed in the Full Disk Access.
+Finally, it is worth noting that there is one app on the Mac that always has `Full Disk Access` but never appears in the `Full Disk Access` pane in System Preferences: the `Finder`. Any application that can control the Finder (listed in `Automation` in the `Privacy` pane) also has `Full Disk Access`, although you will see neither the Finder nor the controlling app listed in the `Full Disk Access`.
 
 **In conclusion**, Transparency, Consent, and Control technology is a vital component of the macOS privacy framework, providing users with the ability to control access to their personal information by apps, ensuring transparency and consent in the process. However, users should also exercise caution when granting full disk access to any app, as this can potentially compromise the integrity of TCC databases and the privacy of their personal information.
 
