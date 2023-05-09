@@ -4,11 +4,14 @@ title: "Understanding Gatekeeper: Apple's macOS Security Technology"
 date: 2023-03-31 10:00:00 +0300
 categories: Security
 ---
-Gatekeeper is a significant security technology developed by Apple to protect macOS users from potentially harmful software. Apple is well known for being picky about what users can install on their operating systems. In this article, we will explain how Gatekeeper works, its evolution, and the features that make it an integral part of the macOS security framework.
+
+Gatekeeper is an essential security technology in macOS, designed to ensure that only trusted software runs on a user's Mac. It verifies the software's authenticity by checking that it comes from an identified developer, has been verified and notarized by Apple to be free from known malicious content, and remains unaltered. In this article, we will discuss how Gatekeeper operates, its development over time, and its crucial features as a fundamental component of the macOS security framework.
+
+By default, Gatekeeper verifies that all downloaded software has been signed by the App Store or a registered developer and notarized by Apple. It checks software for known malicious content when first opened, regardless of the source. Users and organizations can choose to allow only App Store software or override Gatekeeper policies as needed, and mobile device management (MDM) solutions can be used to configure settings. Additionally, Gatekeeper safeguards against malicious plug-ins distributed with benign apps by opening them from randomized, read-only locations when necessary.
 
 ## Historical Reference
 
-The evolution of Gatekeeper can be traced back to Mac OS X 10.4 Tiger’s `Download Validation` that was introduced to protect users from potentially malicious content by warning them about unsafe file types.
+The evolution of Gatekeeper can be traced back to Mac OS X 10.4 Tiger’s `Download Validation`, which was introduced to protect users from potentially malicious content by warning them about unsafe file types.
 
 This feature was further improved upon in Mac OS X 10.5 Leopard, which introduced `File Quarantine`. With this feature, macOS remembers which content the user obtained from a network, and the first time a potentially unsafe file is opened in Finder, Spotlight, or from the Dock, the file quarantine feature will warn the user about unsafe file types. The user is advised to cancel if they have any doubts about the file.
 
@@ -40,12 +43,12 @@ The System Policy database is located at `/var/db/SystemPolicy` and includes fou
 
 ## Other DBs
 
-in addition to the databases mentioned above, Gatekeeper actively uses the following databases:
+In addition to the databases mentioned above, Gatekeeper actively uses the following databases:
 * /var/db/SystemPolicyConfiguration/ExecPolicy
 * /var/db/SystemPolicyConfiguration/KextPolicy
 * /var/db/SystemPolicyConfiguration/Tickets
 
-These databases are used by the system to determine whether a certain executable, kernel extension or code signature should be trusted. The `ExecPolicy` database is used for allowing or denying the execution of specific binaries or scripts. The `KextPolicy` database is used for allowing or denying the loading of specific kernel extensions. The `Tickets` database is used for managing software update tickets. These databases are essential to the functioning of Gatekeeper, and they are protected by SIP, which makes them very difficult for adversaries to tamper with.
+These databases are used by the system to determine whether a certain executable, kernel extension, or code signature should be trusted. The `ExecPolicy` database is used for allowing or denying the execution of specific binaries or scripts. The `KextPolicy` database is used for allowing or denying the loading of specific kernel extensions. The `Tickets` database is used for managing software update tickets. These databases are essential to the functioning of Gatekeeper, and they are protected by SIP, which makes them very difficult for adversaries to tamper with.
 
 ## To sum up
 
