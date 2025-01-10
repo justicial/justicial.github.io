@@ -85,7 +85,7 @@ Attackers may attempt to use tools like **lldb** to attach to child processes an
 ```bash
 sudo lldb -n bc
 process attach --pid 1234
-expr system("open /Applications/Calculator.app")
+expr (int)system("open /System/Applications/Calculator.app")
 ```
 
 However, this approach faces significant restrictions on modern macOS versions:
