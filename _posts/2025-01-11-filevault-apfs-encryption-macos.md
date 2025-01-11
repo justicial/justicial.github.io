@@ -2,7 +2,7 @@
 layout: post
 date: 2025-01-11 20:00:00 +0300
 title: "Understanding FileVault and APFS Encryption on macOS"
-categories: [Apple, macOS, Security]
+categories: Security
 ---
 
 When it comes to safeguarding your data, Apple's macOS offers robust tools to ensure local storage remains secure. Two key technologies, **FileVault** and **APFS Encrypted Volumes**, are at the forefront of this effort. While they might seem similar, they have distinct functionalities and use cases, especially on Macs with T2 or Apple silicon chips. Let's explore the nuances of these technologies and how they work to keep your data safe.
